@@ -1,3 +1,14 @@
+async function forceUnsubscribe() {
+  const reg = await navigator.serviceWorker.getRegistration();
+  if (!reg) return;
+
+  const sub = await reg.pushManager.getSubscription();
+  if (sub) {
+    await sub.unsubscribe();
+    console.log("🧹 Push subscription lama dihapus");
+  }
+}
+
 console.log("🔥 fcm.js loaded");
 
 if (!("serviceWorker" in navigator)) {
