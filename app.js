@@ -543,46 +543,7 @@ function renderBarisBarang(data) {
   `).join("");
 }
 
-async function initFCM() {
-  try {
-    const permission = await Notification.requestPermission();
-    console.log("Notification permission:", permission);
 
-    if (permission !== "granted") return;
-
-    const registration = await navigator.serviceWorker.ready;
-    console.log("ServiceWorker ready:", registration);
-
-    const token = await messaging.getToken({
-      vapidKey: "BDF5EBnh34T5afTxCxmdQS8Tljk3ZjdIr07keapbbsXDdJ1ngJvV8Sxt2S99cmLnB0ZwAgxlo-4NguOTivolMyc",
-      serviceWorkerRegistration: registration
-    });
-
-    console.log("FCM TOKEN RESULT:", token);
-
-    if (!token) {
-      console.warn("⚠️ Token null / undefined");
-      return;
-    }
-
-    const { error } = await supabaseClient
-      .from("fcm_tokens")
-      .upsert({ token }, { onConflict: "token" });
-
-    if (error) {
-      console.error("❌ Supabase error:", error);
-      return;
-    }
-
-    console.log("✅ FCM token tersimpan ke Supabase");
-  } catch (err) {
-    console.error("❌ initFCM error:", err);
-  }
-}
-
-window.addEventListener("load", () => {
-  initFCM();
-});
 
 
 
