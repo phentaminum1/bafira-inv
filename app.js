@@ -550,24 +550,43 @@ function renderBarisBarang(data) {
 }
 
 async function initFCM() {
-  const permission = await Notification.requestPermission();
-  if (permission !== "granted") return;
+  try {
+    const permission = await Notification.requestPermission();
+    console.log("Notification permission:", permission);
 
-  const registration = await navigator.serviceWorker.ready;
+    if (permission !== "granted") return;
 
-  const token = await messaging.getToken({
-    vapidKey: "BDF5EBnh34T5afTxCxmdQS8Tljk3ZjdIr07keapbbsXDdJ1ngJvV8Sxt2S99cmLnB0ZwAgxlo-4NguOTivolMyc",
-    serviceWorkerRegistration: registration
-  });
+    const registration = await navigator.serviceWorker.ready;
+    console.log("ServiceWorker ready:", registration);
 
-  if (!token) return;
+    const token = await messaging.getToken({
+      vapidKey: "BDF5EBnh34T5afTxCxmdQS8Tljk3ZjdIr07keapbbsXDdJ1ngJvV8Sxt2S99cmLnB0ZwAgxlo-4NguOTivolMyc",
+      serviceWorkerRegistration: registration
+    });
 
-  await supabaseClient
-    .from("fcm_tokens")
-    .upsert({ token }, { onConflict: "token" });
+    console.log("FCM TOKEN RESULT:", token);
 
-  console.log("FCM token tersimpan");
+    if (!token) {
+      console.warn("⚠️ Token null / undefined");
+      return;
+    }
+
+    const { error } = await supabaseClient
+      .from("fcm_tokens")
+      .upsert({ token }, { onConflict: "token" });
+
+    if (error) {
+      console.error("❌ Supabase error:", error);
+      return;
+    }
+
+    console.log("✅ FCM token tersimpan ke Supabase");
+  } catch (err) {
+    console.error("❌ initFCM error:", err);
+  }
 }
+
+
 
 
 
