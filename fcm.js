@@ -17,13 +17,16 @@ if (!("serviceWorker" in navigator)) {
 
 async function initFCM() {
   try {
+    await forceUnsubscribe();
+
     const permission = await Notification.requestPermission();
     console.log("Notification permission:", permission);
     if (permission !== "granted") return;
 
     const registration = await navigator.serviceWorker.register(
-      "firebase-messaging-sw.js"
+      "/bafira-inv/firebase-messaging-sw.js"
     );
+
     console.log("✅ FCM Service Worker AKTIF");
 
     const token = await messaging.getToken({
@@ -32,6 +35,7 @@ async function initFCM() {
     });
 
     console.log("🔥 FCM TOKEN:", token);
+
     if (!token) return;
 
     const { error } = await supabaseClient
@@ -48,5 +52,3 @@ async function initFCM() {
     console.error("❌ initFCM error:", err);
   }
 }
-
-window.addEventListener("load", initFCM);
