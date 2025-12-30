@@ -26,12 +26,12 @@
   <script src="app.js" defer></script>
   <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/firebase-messaging-sw.js")
+  navigator.serviceWorker
+    .register("firebase-messaging-sw.js")
     .then(() => console.log("FCM SW terdaftar"))
     .catch(err => console.error("FCM SW gagal", err));
 }
 </script>
-
 
 </head>
 <body>
@@ -67,4 +67,5 @@ if ("serviceWorker" in navigator) {
 
 </body>
 </html>
+
 
