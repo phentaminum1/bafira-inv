@@ -551,21 +551,23 @@ function renderBarisBarang(data) {
 
 async function initFCM() {
   const permission = await Notification.requestPermission();
-  if (permission !== "granted") {
-    alert("Notifikasi ditolak");
-    return;
-  }
+  if (permission !== "granted") return;
+
+  const registration = await navigator.serviceWorker.ready;
 
   const token = await messaging.getToken({
-    vapidKey: "BDF5EBnh34T5afTxCxmdQS8Tljk3ZjdIr07keapbbsXDdJ1ngJvV8Sxt2S99cmLnB0ZwAgxlo-4NguOTivolMyc"
+    vapidKey: "VAPID_KEY_KAMU",
+    serviceWorkerRegistration: registration
   });
 
-  console.log("FCM TOKEN:", token);
+  if (!token) return;
 
   await supabaseClient
     .from("fcm_tokens")
-    .upsert({ token });
+    .upsert({ token }, { onConflict: "token" });
+
+  console.log("FCM token tersimpan");
 }
 
-initFCM();
+
 
