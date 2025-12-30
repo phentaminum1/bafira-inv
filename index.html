@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventory Kontrol F&B</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+
+<script>
+  firebase.initializeApp({
+    apiKey: "AIzaSyDcRF7nPTEsUYalz_mG4uqMaj978gF6yu4",
+    authDomain: "bafira-notifikasi.firebaseapp.com",
+    projectId: "bafira-notifikasi",
+    storageBucket: "bafira-notifikasi.firebasestorage.app",
+    messagingSenderId: "67628509348",
+    appId: "1:67628509348:web:35090a2df41b07d5dd9e31"
+  });
+
+  const messaging = firebase.messaging();
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js" defer></script>
+  <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/firebase-messaging-sw.js");
+}
+</script>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <img src="https://raw.githubusercontent.com/phentaminum1/Bafira/main/WhatsApp%20Image%202025-12-15%20at%2009.13.49.jpeg" class="logo">
+    <h1>Inventory Kontrol</h1>
+    <p>Produksi Tepung Serbaguna</p>
+  </header>
+
+  <!-- MENU -->
+  <nav class="menu">
+    <button onclick="go('baku')">Bahan Baku</button>
+    <button onclick="go('penunjang')">Penunjang</button>
+    <button onclick="go('masuk')">Stok Masuk</button>
+    <button onclick="go('pakai')">Pakai Bahan</button>
+    <button onclick="go('barang')">Edit Barang</button>
+    <button onclick="go('riwayat')">Riwayat Produksi</button>
+  </nav>
+
+  <!-- APP (SATU HALAMAN) -->
+  <main class="content" id="app">
+    <div class="card">
+      <h2>Selamat Datang</h2>
+      <p>Silakan pilih menu untuk mulai mengontrol stok dan produksi.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Inventory Kontrol © 2025
+  </footer>
+
+</body>
+</html>

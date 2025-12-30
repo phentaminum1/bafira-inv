@@ -1,0 +1,270 @@
+/* =========================
+   RESET & GLOBAL
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================
+   COLOR PALETTE (BAFIRA)
+========================= */
+:root {
+  --primary: #6B3F2C;     /* coklat gandum tua */
+  --secondary: #8B5A3C;   /* coklat medium */
+  --background: #F7F5F2;  /* putih krem */
+  --surface: #FFFFFF;
+  --text-main: #2F2A26;
+  --text-muted: #7A6E66;
+  --danger: #B23A2E;
+  --border: #E0DAD3;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  background: var(--background);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.header p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* LOGO */
+.logo {
+  width: 72px;
+  height: auto;
+  margin-bottom: 6px;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+/* =========================
+   MENU / NAVIGATION
+========================= */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.menu button {
+  flex: 1 1 48%;
+  padding: 12px 10px;
+  border: 1px solid var(--border);
+  background: #FBFAF8;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.menu button:hover {
+  background: #EFEAE5;
+}
+
+/* BUTTON DANGER */
+.menu .danger {
+  background: #FBEAEA;
+  color: var(--danger);
+  border-color: #E5B7B3;
+}
+
+.menu .danger:hover {
+  background: #F3D7D5;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+.content {
+  padding: 14px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: var(--surface);
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  margin-bottom: 14px;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   TABLE
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+th {
+  background: #EFEAE5;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* =========================
+   FORM ELEMENT
+========================= */
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #FFFFFF;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--secondary);
+}
+
+/* =========================
+   BUTTON GLOBAL
+========================= */
+button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* =========================
+   LIST
+========================= */
+ul {
+  padding-left: 22px;
+  margin-top: 6px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+/* =========================
+   ALERT / STATUS
+========================= */
+.alert-danger {
+  background: #FBEAEA;
+  color: var(--danger);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #E5B7B3;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   DESKTOP RESPONSIVE
+========================= */
+@media (min-width: 768px) {
+  .menu button {
+    flex: 1 1 auto;
+  }
+
+  .content {
+    max-width: 960px;
+    margin: auto;
+  }
+}
+
+.card {
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: #f5f5f5;
+}
+
+.batch-card {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.batch-card:hover {
+  background: #eef;
+}
+
+.batch-detail {
+  padding: 8px 20px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  background: var(--danger);
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+.tr-danger {
+  background-color: #FBEAEA;
+  color: #B23A2E;
+  font-weight: 600;
+}
