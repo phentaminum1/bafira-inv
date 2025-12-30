@@ -556,7 +556,7 @@ async function initFCM() {
   const registration = await navigator.serviceWorker.ready;
 
   const token = await messaging.getToken({
-    vapidKey: "VAPID_KEY_KAMU",
+    vapidKey: "BDF5EBnh34T5afTxCxmdQS8Tljk3ZjdIr07keapbbsXDdJ1ngJvV8Sxt2S99cmLnB0ZwAgxlo-4NguOTivolMyc",
     serviceWorkerRegistration: registration
   });
 
