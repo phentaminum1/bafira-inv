@@ -586,6 +586,12 @@ async function initFCM() {
   }
 }
 
+window.addEventListener("load", () => {
+  initFCM();
+});
+
+
+
 
 
 
