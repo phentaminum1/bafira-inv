@@ -6,6 +6,10 @@ if ("serviceWorker" in navigator) {
     .then(async reg => {
       console.log("✅ FCM Service Worker terdaftar");
 
+      // 🔥 TUNGGU SAMPAI AKTIF
+      await navigator.serviceWorker.ready;
+      console.log("🟢 Service Worker aktif");
+
       const permission = await Notification.requestPermission();
       console.log("Notification permission:", permission);
       if (permission !== "granted") return;
